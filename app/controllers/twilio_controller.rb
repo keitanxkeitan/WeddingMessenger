@@ -10,7 +10,7 @@ class TwilioController < ApplicationController
 
   def welcome
     response = Twilio::TwiML::Response.new do |r|
-      r.Say <<"EOS"
+      r.Say <<"EOS", language: "ja-jp"
 お電話ありがとうございます。
 この電話番号にて新郎新婦へのお祝いメッセージを承ります。
 頂戴したメッセージは、結婚式二次会にて２人にプレゼントいたします。
@@ -27,7 +27,7 @@ EOS
 
   def record
     response = Twilio::TwiML::Response.new do |r|
-      r.Say <<"EOS"
+      r.Say <<"EOS", language: "ja-jp"
 それでは、新郎新婦にお届けするお祝いメッセージを
 発信音の後に続いて、60秒以内でお話ください。
 完了したらシャープを押してください。準備はよろしいですか？
@@ -56,11 +56,11 @@ EOS
     record = Record.find_by(sid: params[:sid])
     response = Twilio::TwiML::Response.new do |r|
       r.Gather action: "respond_to_confirm/#{record.sid}", method: "post", numDigits: 1, timeout: 10 do |g|
-        g.Say<<"EOS"
+        g.Say<<"EOS", language: "ja-jp"
 いただいたメッセージを再生します。
 EOS
         g.Play record.recording_url
-        g.Say<<"EOS"
+        g.Say<<"EOS", language: "ja-jp"
 このメッセージをお届けしてよろしければ、数字の1を
 もう一度録音する場合は、数字の3を押してください。
 EOS
@@ -89,7 +89,7 @@ EOS
 
   def confirmed
     response = Twilio::TwiML::Response.new do |r|
-      r.Say <<"EOS"
+      r.Say <<"EOS", language: "ja-jp"
 "メッセージを承りました。お電話ありがとうございました。"
 EOS
     end
