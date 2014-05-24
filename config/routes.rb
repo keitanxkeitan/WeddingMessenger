@@ -1,4 +1,11 @@
 WeddingMessenger::Application.routes.draw do
+  get "wedding_messenger/welcome"
+  get "wedding_messenger/record"
+  get "wedding_messenger/recorded"
+  get "wedding_messenger/confirm"
+  get "wedding_messenger/respond_to_confirm"
+  get "wedding_messenger/confirmed"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
