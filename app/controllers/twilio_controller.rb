@@ -53,7 +53,7 @@ EOS
   end
 
   def confirm
-    record = Record.find_by(sid: params[:sid])
+    record = Record.find_by(sid: params[:sid].to_i)
     response = Twilio::TwiML::Response.new do |r|
       r.Gather action: "respond_to_confirm/#{record.sid}", method: "post", numDigits: 1, timeout: 10 do |g|
         g.Say <<"EOS", language: "ja-jp"
@@ -72,7 +72,7 @@ EOS
   end
 
   def respond_to_confirm
-    record = Record.find_by(sid: params[:sid])
+    record = Record.find_by(sid: params[:sid].to_i)
     case params[:Digits]
     when "3","2"
       rec.note = "Rejected"
