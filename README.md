@@ -31,10 +31,10 @@ Heroku にデプロイできたら Twilio にログインして、
 
 ## FAQ
 
-Q. 音声ガイドを自分で用意した音声ファイルにしたい
-A. 音声ファイルをアップロードして、`Play AUDIO_FILE_URL`でいけます。詳しくは app/controller/twilio_controller.rb を参照のこと。
+Q. 音声ガイドを自分で用意した音声ファイルにしたい  
+A. 音声ファイルをアップロードして、`Play AUDIO_FILE_URL` とすると音声ファイルが再生されます。詳しくは app/controller/twilio_controller.rb を参照のこと。
 
-Q. 録音可能時間を変更したい（デフォルト60秒）
-A. Record の引数 maxLength の値を変更してください。
+Q. 録音可能時間を変更したい（デフォルト60秒）  
+A. Record の引数 maxLength の値を変更してください。詳しくは app/controller/twilio_controller.rb を参照のこと。
 
 by keitanxkeitan
