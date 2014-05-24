@@ -4,8 +4,8 @@ WeddingMessenger::Application.routes.draw do
   match "welcome" => "twilio#welcome", :via => :get
   match "record" => "twilio#record", :via => :get
   match "recorded" => "twilio#recorded", :via => :post
-  match "confirm/:sid" => "twilio#confirm", :via => :get
-  match "respond_to_confirm/:sid" => "twilio#respond_to_confirm", :via => :post
+  match "confirm/:id" => "twilio#confirm", :via => :get
+  match "respond_to_confirm/:id" => "twilio#respond_to_confirm", :via => :post
   match "confirmed" => "twilio#confirmed", :via => :get
   
   # The priority is based upon order of creation: first created -> highest priority.

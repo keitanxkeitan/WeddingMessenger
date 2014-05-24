@@ -42,21 +42,20 @@ EOS
   def recorded
     begin
       raise ArgumentError unless params[:RecordingSid]
-      record = Record.new(sid: params[:RecordingSid],
-                          recording_url: params[:RecordingUrl],
+      record = Record.new(recording_url: params[:RecordingUrl],
                           from: params[:From],
                           note: 'Created')
       record.save
-      redirect_to "/confirm/#{record.sid}"
+      redirect_to "/confirm/#{record.id}"
     rescue Exception => e
       redirect_to "/confirmed"
     end    
   end
 
   def confirm
-    record = Record.find_by(sid: params[:sid])
+    record = Record.find_by(id: params[:id].to_i)
     response = Twilio::TwiML::Response.new do |r|
-      r.Gather action: "/respond_to_confirm/#{record.sid}", method: "post", numDigits: 1, timeout: 10 do |g|
+      r.Gather action: "/respond_to_confirm/#{record.id}", method: "post", numDigits: 1, timeout: 10 do |g|
         g.Say <<"EOS", language: "ja-jp"
 いただいたメッセージを再生します。
 EOS
@@ -66,14 +65,14 @@ EOS
 もう一度録音する場合は、数字の3を押してください。
 EOS
       end
-      r.Redirect "/confirm/#{params[:sid]}", method: "get"
+      r.Redirect "/confirm/#{params[:id]}", method: "get"
     end
 
     render_twiml response
   end
 
   def respond_to_confirm
-    record = Record.find_by(sid: params[:sid])
+    record = Record.find_by(id: params[:id].to_i)
     case params[:Digits]
     when "3","2"
       record.note = "Rejected"
@@ -84,7 +83,7 @@ EOS
       record.save
       redirect_to "/confirmed"
     else
-      redirect_to "/confirm/#{record.sid}"
+      redirect_to "/confirm/#{record.id}"
     end
   end
 
