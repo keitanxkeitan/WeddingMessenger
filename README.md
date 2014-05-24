@@ -27,7 +27,7 @@ Heroku にデプロイできたら Twilio にログインして、
 `(Heroku アプリの URL)/records`
 で録音された祝電を再生、ダウンロードできます。
 
-[records](public/README_records.png)
+![records](public/README_records.png)
 
 ## FAQ
 
