@@ -19,7 +19,7 @@ EOS
       # -MEMO-
       # 音声ファイルを再生したい場合は次のようにする。
       # r.Play AUDIO_FILE_URL
-      r.redirect "/record", method: "get"
+      r.Redirect "/record", method: "get"
     end
 
     render_twiml response
