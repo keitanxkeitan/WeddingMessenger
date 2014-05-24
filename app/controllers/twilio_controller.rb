@@ -56,7 +56,7 @@ EOS
   def confirm
     record = Record.find_by(sid: params[:sid].to_i)
     response = Twilio::TwiML::Response.new do |r|
-      r.Gather action: "respond_to_confirm/#{record.sid}", method: "post", numDigits: 1, timeout: 10 do |g|
+      r.Gather action: "/respond_to_confirm/#{record.sid}", method: "post", numDigits: 1, timeout: 10 do |g|
         g.Say <<"EOS", language: "ja-jp"
 いただいたメッセージを再生します。
 EOS
