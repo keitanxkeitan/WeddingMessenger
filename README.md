@@ -16,16 +16,18 @@ Heroku にデプロイして使います。
     $ heroku create
     $ git push heroku master
 
-Heroku にデプロイできたら、Twilio にログインして、
+Heroku にデプロイできたら Twilio にログインして、
 任意の Twilio 電話番号の *Request URL* に
-(Heroku アプリの URL)/welcome
+`(Heroku アプリの URL)/welcome`
 を設定してください。
 
 これで、先ほど設定した Twilio 電話番号に電話をかけると祝電を録音できます。
 
 ## 管理
-(Heroku アプリの URL)/records
+`(Heroku アプリの URL)/records`
 で録音された祝電を再生、ダウンロードできます。
+
+[records](public/README_records.png)
 
 ## FAQ
 
