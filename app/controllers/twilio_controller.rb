@@ -76,12 +76,12 @@ EOS
     record = Record.find_by(sid: params[:sid].to_i)
     case params[:Digits]
     when "3","2"
-      rec.note = "Rejected"
-      rec.save
+      record.note = "Rejected"
+      record.save
       redirect_to "/record"
     when "1"
-      rec.note = "Confirmed"
-      rec.save
+      record.note = "Confirmed"
+      record.save
       redirect_to "/confirmed"
     else
       redirect_to "/confirm/#{record.sid}"
