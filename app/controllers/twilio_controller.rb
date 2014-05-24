@@ -46,6 +46,7 @@ EOS
                           recording_url: params[:RecordingUrl],
                           from: params[:From],
                           note: 'Created')
+      record.save
       redirect_to "/confirm/#{record.sid}"
     rescue Exception => e
       redirect_to "/confirmed"
