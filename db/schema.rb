@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524095252) do
+ActiveRecord::Schema.define(version: 20140524121729) do
 
   create_table "records", force: true do |t|
-    t.integer  "sid"
+    t.string   "sid"
     t.string   "recording_url"
     t.string   "from"
     t.string   "note"

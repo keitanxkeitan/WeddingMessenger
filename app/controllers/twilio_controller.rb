@@ -42,7 +42,7 @@ EOS
   def recorded
     begin
       raise ArgumentError unless params[:RecordingSid]
-      record = Record.new(sid: params[:RecordingSid].to_i,
+      record = Record.new(sid: params[:RecordingSid],
                           recording_url: params[:RecordingUrl],
                           from: params[:From],
                           note: 'Created')
@@ -54,7 +54,7 @@ EOS
   end
 
   def confirm
-    record = Record.find_by(sid: params[:sid].to_i)
+    record = Record.find_by(sid: params[:sid])
     response = Twilio::TwiML::Response.new do |r|
       r.Gather action: "/respond_to_confirm/#{record.sid}", method: "post", numDigits: 1, timeout: 10 do |g|
         g.Say <<"EOS", language: "ja-jp"
@@ -73,7 +73,7 @@ EOS
   end
 
   def respond_to_confirm
-    record = Record.find_by(sid: params[:sid].to_i)
+    record = Record.find_by(sid: params[:sid])
     case params[:Digits]
     when "3","2"
       record.note = "Rejected"
