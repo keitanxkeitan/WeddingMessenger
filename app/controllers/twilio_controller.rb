@@ -29,7 +29,7 @@ EOS
     response = Twilio::TwiML::Response.new do |r|
       r.Say <<"EOS", language: "ja-jp"
 それでは、新郎新婦にお届けするお祝いメッセージを
-発信音の後に続いて、60秒以内でお話ください。
+発信オンの後に続いて、60秒以内でお話ください。
 完了したらシャープを押してください。準備はよろしいですか？
 最初にお名前をお願いいたします。それではどうぞ！
 EOS
@@ -42,7 +42,7 @@ EOS
   def recorded
     begin
       raise ArgumentError unless params[:RecordingSid]
-      record = Record.new(sid: params[:RecordingSid],
+      record = Record.new(sid: params[:RecordingSid].to_i,
                           recording_url: params[:RecordingUrl],
                           from: params[:From],
                           note: 'Created')
