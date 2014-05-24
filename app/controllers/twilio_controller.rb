@@ -56,11 +56,11 @@ EOS
     record = Record.find_by(sid: params[:sid])
     response = Twilio::TwiML::Response.new do |r|
       r.Gather action: "respond_to_confirm/#{record.sid}", method: "post", numDigits: 1, timeout: 10 do |g|
-        g.Say<<"EOS", language: "ja-jp"
+        g.Say <<"EOS", language: "ja-jp"
 いただいたメッセージを再生します。
 EOS
         g.Play record.recording_url
-        g.Say<<"EOS", language: "ja-jp"
+        g.Say <<"EOS", language: "ja-jp"
 このメッセージをお届けしてよろしければ、数字の1を
 もう一度録音する場合は、数字の3を押してください。
 EOS
