@@ -1,4 +1,6 @@
 WeddingMessenger::Application.routes.draw do
+  get "records/new"
+  resources :records
   match "welcome" => "twilio#welcome", :via => :get
   match "record" => "twilio#record", :via => :get
   match "recorded" => "twilio#recorded", :via => :post
