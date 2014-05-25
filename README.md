@@ -1,6 +1,7 @@
 # WeddingMessenger
 
 Twilio を使って電話で祝電を集めるアプリケーションです。
+集めた祝電を iPod shuffle などに入れてプレゼントすると大変喜ばれます。
 
 ## 用意するもの
 
@@ -15,6 +16,7 @@ Heroku にデプロイして使います。
     $ cd WeddingMessenger
     $ heroku create
     $ git push heroku master
+    $ heroku run rake db:migrate
 
 Heroku にデプロイできたら Twilio にログインして、
 任意の Twilio 電話番号の *Request URL* に
